@@ -1,0 +1,6 @@
+.container{
+	padding: 30px;
+	margin: auto;
+	width: fit-content;
+	display: table;
+}

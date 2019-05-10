@@ -1,0 +1,3 @@
+#services:
+#  Daria\BlogBundle\Controller\PostController:
+#    autoconfigure: true
