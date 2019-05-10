@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+{{ form_end(form) }}
+
+{% for post in posts %}
+    <p>{{ post.title }}</p>
+    <p>{{ post.content }}</p>
+{% endfor %}
