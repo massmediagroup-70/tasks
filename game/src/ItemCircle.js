@@ -5,9 +5,4 @@ export default class ItemCircle extends Item {
     super(x, y);
     this.sign = 1;
   }
-
-  push() {
-
-  }
-
 }

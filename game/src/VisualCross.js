@@ -1,14 +1,12 @@
 import ItemCross from './ItemCross';
 
 export default class VisualCross extends ItemCross {
-  constructor() {
-    super();
-  }
+  // eslint-disable-next-line class-methods-use-this
+  push(context, color, x1, y1) {
+    const x = x1 * 200 + 15;
+    const y = y1 * 200 + 15;
 
-  push(context, color, x, y) {
-    x = x * 200 + 15;
-    y = y * 200 + 15;
-
+    // eslint-disable-next-line no-param-reassign
     context.strokeStyle = color;
     context.beginPath();
     context.moveTo(x, y);

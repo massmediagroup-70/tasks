@@ -13,18 +13,18 @@ export default class State {
       ];
       this.saveInLocalStorage();
     }
-    this.setCurrentUser = function (userOption) {
+    this.setCurrentUser = function setCU(userOption) {
       this.currentUser = userOption;
       this.saveInLocalStorage();
     };
-    this.getCurrentUser = function () {
+    this.getCurrentUser = function getCU() {
       return this.currentUser;
     };
-    this.setMatrixElement = function (x, y, value) {
+    this.setMatrixElement = function setME(x, y, value) {
       this.matrix[x][y] = value;
       this.saveInLocalStorage();
     };
-    this.getMatrixElement = function (x, y) {
+    this.getMatrixElement = function getME(x, y) {
       return this.matrix[x][y];
     };
   }

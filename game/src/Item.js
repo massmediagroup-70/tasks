@@ -5,7 +5,8 @@ export default class Item {
     this.y = _y;
   }
 
-  push(x, y) {
+  // eslint-disable-next-line class-methods-use-this
+  push() {
 
   }
 }

@@ -8,8 +8,6 @@ export default class Game {
   }
 
   makeMove(user, x, y) {
-    x = this.convertCoordinate(x);
-    y = this.convertCoordinate(y);
     if (this.state.checkMatrixElement(x, y)) {
       user.move(x, y);
       this.state.setMatrixElement(x, y, user.item.sign);
@@ -20,18 +18,8 @@ export default class Game {
     }
   }
 
-  returnIndex(coordinate) {
-    if (coordinate <= 200) {
-      return 0;
-    }
-    if (coordinate <= 400) {
-      return 200;
-    } return 400;
-  }
+  // eslint-disable-next-line class-methods-use-this
 
-  convertCoordinate(x) {
-    return this.returnIndex(x) / 200;
-  }
 
   changeXY(x, y) {
     let user = null;

@@ -11,16 +11,16 @@ export default class VisualField {
     this.canvas.width = size;
     this.canvas.height = size;
 
-    this.setCanvas = function (_canvasOption) {
+    this.setCanvas = function setC(_canvasOption) {
       this.canvas = _canvasOption;
       this.canvas.context = this.canvas.getContext('2d');
     };
 
-    this.getCanvas = function () {
+    this.getCanvas = function getC() {
       return this.canvas;
     };
 
-    this.getContext = function () {
+    this.getContext = function getCo() {
       return this.canvas.context;
     };
 
@@ -53,16 +53,20 @@ export default class VisualField {
   }
 
   clickListener(canvas = this.canvas, control) {
-    this.getCanvas().onclick = function (event) {
+    this.getCanvas().onclick = function Click(event) {
       const canvasBounding = canvas.getBoundingClientRect();
-      const x = ((event.clientX - canvasBounding.left) * (canvas.width / canvasBounding.width));
-      const y = ((event.clientY - canvasBounding.top) * (canvas.height / canvasBounding.height));
+      const x1 = ((event.clientX - canvasBounding.left) * (canvas.width / canvasBounding.width));
+      const y1 = ((event.clientY - canvasBounding.top) * (canvas.height / canvasBounding.height));
+      const x = control.convertCoordinate(x1);
+      const y = control.convertCoordinate(y1);
       control.clickField(x, y);
     };
   }
 
+  // eslint-disable-next-line class-methods-use-this
   buttonRestartListener(button, control) {
-    button.onclick = function (event) {
+    // eslint-disable-next-line no-param-reassign
+    button.onclick = function Click() {
       control.clickRestart();
     };
   }

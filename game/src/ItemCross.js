@@ -5,8 +5,4 @@ export default class ItemCross extends Item {
     super(x, y);
     this.sign = 2;
   }
-
-  push(x, y) {
-
-  }
 }
