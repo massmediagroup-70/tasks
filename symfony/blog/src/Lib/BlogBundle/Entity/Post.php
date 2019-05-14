@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Entity;
+namespace App\Lib\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
+ * @ORM\Entity(repositoryClass="App\Lib\BlogBundle\Repository\PostRepository")
  */
 class Post
 {
@@ -56,5 +56,11 @@ class Post
     {
         $this->content = $content;
         return $this;
+    }
+
+    public function getComments(){
+        return $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findToPost($this->getId());
     }
 }

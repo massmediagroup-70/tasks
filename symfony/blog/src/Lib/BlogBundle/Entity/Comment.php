@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Entity;
+namespace App\Lib\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
+ * @ORM\Entity(repositoryClass="App\Lib\BlogBundle\Repository\CommentRepository")
  */
 class Comment
 {
@@ -25,6 +25,11 @@ class Comment
      * @ORM\Column(type="text")
      */
     protected $content;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $postId;
 
     public function getAuthor()
     {
@@ -46,6 +51,11 @@ class Comment
         return $this;
     }
 
+    public function getPostId()
+    {
+        return $this->postId;
+    }
+
     public function setAuthor($author)
     {
         $this->author = $author;
@@ -55,6 +65,12 @@ class Comment
     public function setContent($content)
     {
         $this->content = $content;
+        return $this;
+    }
+
+    public function setPostId($id)
+    {
+        $this->postId = $id;
         return $this;
     }
 }

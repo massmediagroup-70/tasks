@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+      # automatically registers your services as commands, event subscribers, etc.
+      autoconfigure: true
+
+
+  lib.create_form_handler:
+    class: App\Lib\BlogBundle\Form\Handler\CreateFormHandler
+    arguments: ['@doctrine.orm.entity_manager']
+
+  lib.post_controller:
+    class: App\Lib\BlogBundle\Controller\PostController
+    arguments: ["@service_container"]
+
+

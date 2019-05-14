@@ -1,7 +1,50 @@
-{{ form_start(form) }}
-{{ form_end(form) }}
+{% extends 'base.html.twig' %}
 
-{% for post in posts %}
-    <p>{{ post.title }}</p>
-    <p>{{ post.content }}</p>
-{% endfor %}
+{% block body %}
+    <div class="container col-md-6 col-md-offset-6">
+    {{ form_start(form) }}
+    <div id="js-comments-wrapper"
+        data-prototype="{{ form_widget(form.comments.vars.prototype)|e('html_attr') }}"
+        data-index="{{ form.comments|length }}"
+         >
+
+    </div>
+    {{ form_end(form) }}
+    {% for post in posts %}
+        <div class="border px-2 m-3">
+        <p>{{ post.title }}</p>
+        <p>{{ post.content }}</p>
+        <h1>{% for comment in commentsPosts %}</h1>
+            {% if (post.id == comment.postId) %}
+                <div class="bg-secondary p-1 m-2 rounded">
+                    <h5>{{ comment.author }}</h5>
+                    <h6>{{ comment.content }}</h6>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+        {% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        var wrapper = $("#js-comments-wrapper"); //Fields wrapper
+        var add_button      = $("#module_add_comment"); //Add button ID
+
+        var x = 0; //initlal text box count
+        $(add_button).click(function(e){ //on add input button click
+
+          var prototype = wrapper.data('prototype');
+          var index = wrapper.data('index');
+          var newForm = prototype.replace(/__name__/g, index);
+          wrapper.data('index', index + 1);
+          $(this).before(newForm);
+        });
+
+      });
+    </script>
+    </div>
+{% endblock %}
