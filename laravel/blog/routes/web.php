@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['ip']], function () {
+
+    Route::get('/', 'PostController@index');
+    Route::get('/create', 'PostController@create');
+    Route::post('/', 'PostController@store');
+    Route::post('/search', 'PostController@search');
+
 });

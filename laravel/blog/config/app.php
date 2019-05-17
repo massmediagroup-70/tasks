@@ -2,6 +2,11 @@
 
 return [
 
+    'ipDeny' => [
+        '127.0.0.4',
+        '127.0.0.2'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -161,6 +166,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
 
         /*
          * Package Service Providers...
